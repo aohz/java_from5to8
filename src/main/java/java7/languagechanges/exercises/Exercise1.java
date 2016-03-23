@@ -2,16 +2,12 @@ package main.java.java7.languagechanges.exercises;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * - Simplify and remove duplicate code regarding exception management
- * 
- * - Implement the method to read transactions from File
- * 
+ *
  * - Implement the method to return the transaction charge depending on the
  * transaction type
  * 
@@ -19,8 +15,6 @@ import java.util.List;
  *
  */
 public class Exercise1 {
-
-	private static final String FILE_PATH = "Transactions.txt";
 
 	private static final String PAYMENT = "Payment";
 	private static final String SALE = "Sale";
@@ -34,7 +28,7 @@ public class Exercise1 {
 
 	public static void main(String... args) {
 		try {
-			List<Transaction> transactions = readTransactionFromFile();
+			List<Transaction> transactions = getTransactions();
 
 			for (Transaction t : transactions) {
 				double charge = getTransactionCharge(t);
@@ -51,25 +45,30 @@ public class Exercise1 {
 		}
 	}
 
-	private static List<Transaction> readTransactionFromFile() throws URISyntaxException, IOException {
+	private static List<Transaction> getTransactions() throws URISyntaxException, IOException {
 		List<Transaction> transactions = new ArrayList<>();
-		// TODO: implement the code to read transaction.txt file and then call
-		// the method parseLineToTransaction
+		transactions.add(new Transaction("Payment", 1000000));
+		transactions.add(new Transaction("Sale", 5000000));
+		transactions.add(new Transaction("Debit", 2000000));
+		transactions.add(new Transaction("Credit", 1000000));
 		return transactions;
 	}
 
-	private static final Transaction parseLineToTransaction(String fileLine) {
-		Object[] splitLine = fileLine.split(" ");
-		String transType = (String) splitLine[0];
-		double amount = Double.parseDouble((String) splitLine[1]);
-		return new Transaction(transType, amount);
-	}
-
 	private static double getTransactionCharge(Transaction transaction) {
+		// TODO: Simplify code using switch statement		
 		double charge = 0;
-		// TODO: implement the code to return the transaction charge depending
-		// on the transaction type
+		String type = transaction.getType();
+		if (PAYMENT.equals(type)) {
+			charge = PAYMENT_CHARGE;
+		} else if (SALE.equals(type)) {
+			charge = SALE_CHARGE;
+		} else if (DEBIT.equals(type)) {
+			charge = DEBIT_CHARGE;
+		} else if (CREDIT.equals(type)) {
+			charge = CREDIT_CHARGE;
+		}
 		return charge;
+
 	}
 
 	private static final double calculateFinalAmount(Transaction t, double charge) {

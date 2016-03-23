@@ -2,26 +2,30 @@ package main.java.java7.nio.exercises;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 
 
 /**
- * Copy the generated file tree to a target location using walkFileTree
+ * List The files in the Temp folder created using the Walk File Tree
  * 
  * @author aohz
  *
  */
-public class Exercise1 {
+public class Exercise3 {
 
 	public static void main(String... args) throws IOException {
 		Path root = createTempFolder();
-		copyTreeToTargetLocation(root, FileSystems.getDefault().getPath("/TEMP"));
+		listFilesInFolder(root, FileSystems.getDefault().getPath("/TEMP"));
 	}
 
-	public static void copyTreeToTargetLocation(Path source, Path target) throws IOException {
-	
+	public static void listFilesInFolder(Path source, Path target) throws IOException {
+
+		
 	}
 
 	private static Path createTempFolder() throws IOException {

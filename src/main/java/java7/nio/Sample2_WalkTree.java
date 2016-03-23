@@ -7,11 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.DosFileAttributeView;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
-import java.util.Set;
 
 /**
  * Suppose we want to delete a file tree. In that case, each directory should be deleted after the entries in the directory are deleted.
@@ -48,11 +43,7 @@ public class Sample2_WalkTree {
 		});
 
 	}
-
-	private static void validateFolderIsEmpty(Path root) throws IOException {		
-		System.out.println("Temp Folder exist?  " + Files.exists(root));
-	}
-	
+		
 	private static Path createTempFolder() throws IOException {
 //		Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwxr-x---");
 //		FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(perms);
@@ -65,4 +56,7 @@ public class Sample2_WalkTree {
 		return root;
 	}
 
+	private static void validateFolderIsEmpty(Path root) throws IOException {		
+		System.out.println("Temp Folder exist?  " + Files.exists(root));
+	}
 }

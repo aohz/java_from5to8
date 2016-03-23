@@ -1,6 +1,8 @@
-package main.java.java7.nio;
+package main.java.java7.nio.solutions;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 import static java.nio.file.StandardWatchEventKinds.OVERFLOW;
 
 import java.io.IOException;
@@ -11,13 +13,18 @@ import java.nio.file.Paths;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
+import java.util.concurrent.TimeUnit;
 
 /**
+ * 1 - Improve the following code to be notified when files are edited or deleted
+ * 
+ * 2 - I don't want the thread to be block while it is waiting for changes in
+ * the file system
  * 
  * @author aohz
  *
  */
-public class Sample3_WatchService {
+public class SolutionEx4 {
 
 	private static final String FOLDER_PATH = "watchservice";
 
@@ -26,22 +33,20 @@ public class Sample3_WatchService {
 		// Create the WatchService
 		WatchService watcher = FileSystems.getDefault().newWatchService();
 
-		Path dir = Paths.get(Sample3_WatchService.class.getClassLoader().getResource(FOLDER_PATH).toURI());
-		System.out.println("Path: " + dir.toAbsolutePath());
-		
+		Path dir = Paths.get(SolutionEx2.class.getClassLoader().getResource(FOLDER_PATH).toURI());
 		try {
-			WatchKey key = dir.register(watcher, ENTRY_CREATE);
+			WatchKey key = dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE);
 
 			while (true) {
 
 				// wait for key to be signaled
 				try {					
-					// watcher.poll();
-					key = watcher.take();
+					key = watcher.poll(5, TimeUnit.SECONDS);
 					if (key == null) {
 						doSomethingInteresting();
 						continue;
 					}
+
 				} catch (InterruptedException x) {
 					return;
 				}
@@ -77,7 +82,6 @@ public class Sample3_WatchService {
 		} catch (IOException x) {
 			System.err.println(x);
 		}
-
 	}
 
 	private static void doSomethingInteresting() {

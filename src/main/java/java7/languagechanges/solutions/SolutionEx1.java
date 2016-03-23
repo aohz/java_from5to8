@@ -2,17 +2,12 @@ package main.java.java7.languagechanges.solutions;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * - Simplify and remove duplicate code regarding exception management
- * 
- * - Implement the method to read transactions from File
- * 
+ *
  * - Implement the method to return the transaction charge depending on the
  * transaction type
  * 
@@ -20,8 +15,6 @@ import java.util.List;
  *
  */
 public class SolutionEx1 {
-
-	private static final String FILE_PATH = "Transactions.txt";
 
 	private static final String PAYMENT = "Payment";
 	private static final String SALE = "Sale";
@@ -35,7 +28,7 @@ public class SolutionEx1 {
 
 	public static void main(String... args) {
 		try {
-			List<Transaction> transactions = readTransactionFromFile();
+			List<Transaction> transactions = getTransactions();
 
 			for (Transaction t : transactions) {
 				double charge = getTransactionCharge(t);
@@ -48,22 +41,13 @@ public class SolutionEx1 {
 		}
 	}
 
-	private static List<Transaction> readTransactionFromFile() throws URISyntaxException, IOException {
+	private static List<Transaction> getTransactions() throws URISyntaxException, IOException {
 		List<Transaction> transactions = new ArrayList<>();
-		Path path = Paths.get(SolutionEx1.class.getClassLoader().getResource(FILE_PATH).toURI());
-		List<String> lines = Files.readAllLines(path);
-		// Have a look to the implementation of readAllLines method
-		for (String line : lines) {
-			transactions.add(parseLineToTransaction(line));
-		}
+		transactions.add(new Transaction("Payment", 1_000_000));
+		transactions.add(new Transaction("Sale", 5_000_000));
+		transactions.add(new Transaction("Debit", 2_000_000));
+		transactions.add(new Transaction("Credit", 1_000_000));		
 		return transactions;
-	}
-
-	private static final Transaction parseLineToTransaction(String fileLine) {
-		Object[] splitLine = fileLine.split(" ");
-		String transType = (String) splitLine[0];
-		double amount = Double.parseDouble((String) splitLine[1]);
-		return new Transaction(transType, amount);
 	}
 
 	private static double getTransactionCharge(Transaction transaction) {
