@@ -46,7 +46,7 @@ public class Exercise1 {
 	}
 
 	private static List<Transaction> getTransactions() throws URISyntaxException, IOException {
-		List<Transaction> transactions = new ArrayList<>();
+		List<Transaction> transactions = new ArrayList<Transaction>();
 		transactions.add(new Transaction("Payment", 1000000));
 		transactions.add(new Transaction("Sale", 5000000));
 		transactions.add(new Transaction("Debit", 2000000));
