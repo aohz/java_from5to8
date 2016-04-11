@@ -3,10 +3,11 @@ package main.java.java6;
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 
-public class Sample2_WebServices {
+public class Sample1_WebServices {
 
 	public static void main(String... args) {
 
+		// To access the wsdl file go to -> http://localhost:8080/WebServiceExample/circlefunctions?wsdl
 		Endpoint.publish("http://localhost:8080/WebServiceExample/circlefunctions", new CircleFunctions());
 
 	}
