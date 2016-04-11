@@ -8,19 +8,19 @@ import java.nio.channels.CompletionHandler;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Sample4_Callback {
+public class Sample3_Callback {
 
 	private Thread currentThread;
 
 	private static final String FILE_PATH = "readfile.txt";
 
 	public static void main(String[] args) throws Exception {
-		new Sample4_Callback().readFile();
+		new Sample3_Callback().readFile();
 	}
 
 	private void readFile() throws IOException, URISyntaxException {
 
-		Path path = Paths.get(Sample4_Callback.class.getClassLoader().getResource(FILE_PATH).toURI());
+		Path path = Paths.get(Sample3_Callback.class.getClassLoader().getResource(FILE_PATH).toURI());
 
 		AsynchronousFileChannel channel = AsynchronousFileChannel.open(path);
 

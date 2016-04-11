@@ -15,7 +15,7 @@ import java.nio.file.StandardOpenOption;
  * @author aohz
  *
  */
-public class Sample1_TempFile {
+public class Sample5_TempFile {
 
 	private static final String TEMP_FOLDER = System.getProperty("java.io.tmpdir");
 

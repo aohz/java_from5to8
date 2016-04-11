@@ -9,13 +9,13 @@ import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class Sample5_FutureFile {
+public class Sample4_FutureFile {
 	
 	private static final String FILE_PATH = "readfile.txt";
 	
 	public static void main(String[] args) throws URISyntaxException {
 		try {
-			Path file = Paths.get(Sample5_FutureFile.class.getClassLoader().getResource(FILE_PATH).toURI());
+			Path file = Paths.get(Sample4_FutureFile.class.getClassLoader().getResource(FILE_PATH).toURI());
 			// Open file asynchronously
 			AsynchronousFileChannel channel = AsynchronousFileChannel.open(file);
 			/*

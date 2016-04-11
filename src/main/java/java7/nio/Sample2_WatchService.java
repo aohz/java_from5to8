@@ -17,7 +17,7 @@ import java.nio.file.WatchService;
  * @author aohz
  *
  */
-public class Sample3_WatchService {
+public class Sample2_WatchService {
 
 	private static final String FOLDER_PATH = "watchservice";
 
@@ -26,7 +26,7 @@ public class Sample3_WatchService {
 		// Create the WatchService
 		WatchService watcher = FileSystems.getDefault().newWatchService();
 
-		Path dir = Paths.get(Sample3_WatchService.class.getClassLoader().getResource(FOLDER_PATH).toURI());
+		Path dir = Paths.get(Sample2_WatchService.class.getClassLoader().getResource(FOLDER_PATH).toURI());
 		System.out.println("Path: " + dir.toAbsolutePath());
 		
 		try {

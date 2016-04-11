@@ -14,7 +14,7 @@ import java.nio.file.attribute.BasicFileAttributes;
  * @author aohz
  *
  */
-public class Sample2_WalkTree {
+public class Sample1_WalkTree {
 
 	public static void main(String... args) throws IOException {
 		Path root = createTempFolder();
