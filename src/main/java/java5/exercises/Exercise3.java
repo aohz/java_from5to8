@@ -1,4 +1,4 @@
-package main.java.java5.exercises;
+package java5.exercises;
 
 /**
  * - Create a new Annotation "@BookInfo" to the book class to keep the following information:

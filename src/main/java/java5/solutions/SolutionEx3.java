@@ -1,4 +1,4 @@
-package main.java.java5.solutions;
+package java5.solutions;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;

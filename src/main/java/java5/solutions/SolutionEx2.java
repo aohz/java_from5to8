@@ -1,4 +1,4 @@
-package main.java.java5.solutions;
+package java5.solutions;
 
 /**
  * Transform the following code to use Java Enums 

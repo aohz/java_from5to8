@@ -1,4 +1,4 @@
-package main.java.java5;
+package java5;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;

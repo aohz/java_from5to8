@@ -1,4 +1,4 @@
-package main.java.java8.date.exercises;
+package java8.date.exercises;
 
 import java.time.Duration;
 import java.time.LocalDate;

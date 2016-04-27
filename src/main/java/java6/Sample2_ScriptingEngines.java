@@ -1,4 +1,4 @@
-package main.java.java6;
+package java6;
 
 import java.util.List;
 

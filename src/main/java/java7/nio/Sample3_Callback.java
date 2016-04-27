@@ -1,4 +1,4 @@
-package main.java.java7.nio;
+package java7.nio;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -27,6 +27,7 @@ public class Sample3_Callback {
 		ByteBuffer buffer = ByteBuffer.allocate(1024);
 
 		currentThread = Thread.currentThread();
+		System.out.println("Current Thread :" + currentThread.getName());
 
 		channel.read(buffer, 0, "Read operation ALFA", new CompletionHandler<Integer, String>() {
 

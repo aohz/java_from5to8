@@ -1,4 +1,4 @@
-package main.java.java7.nio;
+package java7.nio;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -40,12 +40,15 @@ public class Sample4_FutureFile {
 			
 			readContentFromBuffer(buffer);
 			
+			channel.close();
+			
 		} catch (IOException | ExecutionException | InterruptedException e) {
 			System.out.println(e.getMessage());
 		}
     }
 	
-	private static void doSomethingInteresting() {
+	private static void doSomethingInteresting() throws InterruptedException {
+		Thread.sleep(1);
 		System.out.println("Do something Interesting");
 	}
 	

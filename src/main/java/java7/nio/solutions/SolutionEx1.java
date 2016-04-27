@@ -1,4 +1,4 @@
-package main.java.java7.nio.solutions;
+package java7.nio.solutions;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

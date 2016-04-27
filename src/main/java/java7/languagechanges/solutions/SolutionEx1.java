@@ -1,4 +1,4 @@
-package main.java.java7.languagechanges.solutions;
+package java7.languagechanges.solutions;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

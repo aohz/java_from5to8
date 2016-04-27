@@ -1,4 +1,4 @@
-package main.java.java7.nio.exercises;
+package java7.nio.exercises;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 import static java.nio.file.StandardWatchEventKinds.OVERFLOW;

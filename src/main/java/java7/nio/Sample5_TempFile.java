@@ -1,4 +1,4 @@
-package main.java.java7.nio;
+package java7.nio;
 
 import java.io.IOException;
 import java.io.OutputStream;

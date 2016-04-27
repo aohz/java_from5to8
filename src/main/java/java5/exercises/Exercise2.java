@@ -1,4 +1,4 @@
-package main.java.java5.exercises;
+package java5.exercises;
 
 /**
  * Transform the following code to use Java Enums 

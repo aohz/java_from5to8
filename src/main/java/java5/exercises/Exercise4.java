@@ -1,4 +1,4 @@
-package main.java.java5.exercises;
+package java5.exercises;
 
 import java.lang.reflect.Method;
 
