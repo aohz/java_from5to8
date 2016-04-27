@@ -28,22 +28,18 @@ public class Sample2_WatchService {
 
 		Path dir = Paths.get(Sample2_WatchService.class.getClassLoader().getResource(FOLDER_PATH).toURI());
 		System.out.println("Path: " + dir.toAbsolutePath());
-		
+
 		try {
 			WatchKey key = dir.register(watcher, ENTRY_CREATE);
 
 			while (true) {
 
 				// wait for key to be signaled
-				try {					
-					// watcher.poll();
-					key = watcher.take();
-					if (key == null) {
-						doSomethingInteresting();
-						continue;
-					}
-				} catch (InterruptedException x) {
-					return;
+				// watcher.poll();
+				key = watcher.take();
+				if (key == null) {
+					doSomethingInteresting();
+					continue;
 				}
 
 				for (WatchEvent<?> event : key.pollEvents()) {
@@ -74,10 +70,9 @@ public class Sample2_WatchService {
 				}
 			}
 
-		} catch (IOException x) {
+		} catch (InterruptedException | IOException x) {
 			System.err.println(x);
 		}
-
 	}
 
 	private static void doSomethingInteresting() {

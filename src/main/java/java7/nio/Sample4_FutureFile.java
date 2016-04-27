@@ -40,15 +40,12 @@ public class Sample4_FutureFile {
 			
 			readContentFromBuffer(buffer);
 			
-			channel.close();
-			
 		} catch (IOException | ExecutionException | InterruptedException e) {
 			System.out.println(e.getMessage());
 		}
     }
 	
-	private static void doSomethingInteresting() throws InterruptedException {
-		Thread.sleep(1);
+	private static void doSomethingInteresting() {
 		System.out.println("Do something Interesting");
 	}
 	
