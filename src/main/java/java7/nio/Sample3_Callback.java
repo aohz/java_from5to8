@@ -41,25 +41,19 @@ public class Sample3_Callback {
 			@Override
 			public void failed(Throwable e, String attachment) {
 				System.out.println(attachment + " failed with exception:");
-				e.printStackTrace();
+				System.out.println(e);
 				currentThread.interrupt();
 			}
 		});
-		
-		try {
-			while (!currentThread.isInterrupted()) {
-				System.out.println(Thread.currentThread().getName() + " Waiting for completion...");
-				Thread.sleep(1);				
-			}
-		} catch (InterruptedException e1) {		
-		}
-			
+
+		blockCurrentThreadUntilItisInterrupted();
+
 		readContentFromBuffer(buffer);
-		
+
 		channel.close();
 	}
-	
-	private void readContentFromBuffer(ByteBuffer buffer){
+
+	private void readContentFromBuffer(ByteBuffer buffer) {
 		buffer.flip();
 
 		System.out.print("Buffer contents: ");
@@ -72,5 +66,16 @@ public class Sample3_Callback {
 
 		buffer.clear();
 	}
-	
+
+	private void blockCurrentThreadUntilItisInterrupted() {
+		try {
+			while (!currentThread.isInterrupted()) {
+				System.out.println(Thread.currentThread().getName() + " Waiting for completion...");
+				Thread.sleep(1);
+			}
+		} catch (InterruptedException e1) {
+			System.out.println(e1);
+		}
+	}
+
 }

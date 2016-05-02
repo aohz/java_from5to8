@@ -35,8 +35,8 @@ public class Sample2_WatchService {
 			while (true) {
 
 				// wait for key to be signaled
-				// watcher.poll();
-				key = watcher.take();
+				// key = watcher.take();
+				key = watcher.poll();
 				if (key == null) {
 					doSomethingInteresting();
 					continue;
@@ -75,7 +75,8 @@ public class Sample2_WatchService {
 		}
 	}
 
-	private static void doSomethingInteresting() {
+	private static void doSomethingInteresting() throws InterruptedException {
+		Thread.sleep(5000);
 		System.out.println("Do something interesting while waiting");
 	}
 }

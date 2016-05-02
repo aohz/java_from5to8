@@ -1,12 +1,5 @@
 package java8.date.exercises;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Period;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-
 /**
  *
  * 1- Calculate number of days between today and yesterday
